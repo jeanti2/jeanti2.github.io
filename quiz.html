@@ -1,0 +1,56 @@
+<html>
+
+<script>
+function handleClick() {         
+  	var aCount = 0;   
+  	var bCount = 0;   
+  	var cCount = 0;   
+
+  	for(var i = 1; i <= 3; i++) {
+    	var radios = document.getElementsByName('group'+i);
+    	for(var j = 0; j < radios.length; j++) {
+      		var radio = radios[j];
+      		if(radio.value == "A" && radio.checked) {
+        		aCount++;
+      		} else if(radio.value == "B" && radio.checked) {
+        		bCount++;
+      		} else if(radio.value == "C" && radio.checked) {
+        		cCount++;
+      		}
+    	}
+   	}
+   
+	if(aCount > bCount && aCount > cCount){
+   		document.getElementById("result").innerText = "You are a Pikachu!";
+   	} else if(bCount > aCount && bCount > cCount){
+   		document.getElementById("result").innerText = "You are a Charmander!";
+   	} else if(cCount > aCount && cCount > bCount){
+   		document.getElementById("result").innerText = "You are a Squirtle!";
+   	} else {
+	   	document.getElementById("result").innerText = "You are a Ditto!";	
+   	}
+}
+</script>
+
+<h1>What Pokemon are you?</h1>
+
+What is your favorite color?<br>
+<input type="radio" name="group1" value="A">Yellow<br>
+<input type="radio" name="group1" value="B">Red<br>
+<input type="radio" name="group1" value="C">Blue<hr>
+
+What do you enjoy as a past-time?<br>
+<input type="radio" name="group2" value="A">Photography<br>
+<input type="radio" name="group2" value="B">Cooking<br>
+<input type="radio" name="group2" value="C">Swimming<hr>
+
+When you are angry you:<br>
+<input type="radio" name="group3" value="A">Talk it out<br>
+<input type="radio" name="group3" value="B">Throw a fit<br>
+<input type="radio" name="group3" value="C">Ignore everyone<hr>
+
+<button onclick="return handleClick();">Submit</button>
+
+<div id="result"></div>
+
+</html>

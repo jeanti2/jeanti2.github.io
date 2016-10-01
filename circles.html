@@ -1,0 +1,43 @@
+<html>
+
+<h1>My Awesome Circle</h1>
+<h2>Yay</h2>
+
+<canvas id="DrawingBoard"
+		width="500px"
+		height="500px"
+		style="border: 5px dashed red">
+	
+</canvas>
+
+<!-- use javascript to draw -->
+<script>
+	var llama = document.getElementById("DrawingBoard");
+	var context = llama.getContext("2d");
+	var colors = ["red", "orange", "yellow", "lime", "dodgerblue", "magenta"]
+
+	llama.onclick = function(event) {
+
+		var rect = llama.getBoundingClientRect();
+        var posx = event.clientX - rect.left;
+        var posy = event.clientY - rect.top;
+
+		for(var i = 0; i < 10; i++) {
+			context.beginPath();
+			/* an arc starting at x = 21, y = 22
+			with radius 23, from angle 0 to 2 pi */
+			context.arc(
+				posx, 
+				posy, 
+				Math.floor(Math.random()*100), 
+				0, 2*Math.PI);
+			context.stroke();
+			context.lineWidth = 5
+			context.strokeStyle = colors[Math.floor(Math.random()*7)]
+			/* Challenge: use Math.random() to make a Pollock painting */
+		}
+
+	}
+</script>
+
+</html>

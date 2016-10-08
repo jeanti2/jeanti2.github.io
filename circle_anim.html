@@ -1,0 +1,62 @@
+<html>
+
+<canvas id="myCanvas" 
+  			width="500px"
+  			height="500px"
+  			style="border: 10px dashed green"
+  			>
+</canvas>
+
+<script>
+
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+
+    function drawCircle(x, y, radius, color) {
+        context.beginPath();
+        context.arc(x, y, radius, 0, Math.PI*2);
+        context.fillStyle = color;
+        context.fill();
+        context.closePath();
+    }   
+    //I want a new circle at x = 10, y = 30, radius = 5, color = "red"
+    //drawCircle(10, 30, 5, "red")
+    // draw another circle at x = 230, y = 240, radius = 50, color = "blue"
+
+    function myCoolAnimation() {
+        var colors = ["red", "orange", "blue"]
+        var color = colors[Math.floor(Math.random()*colors.length)]
+        //Your challenge is to make random colors
+        drawCircle(
+            Math.floor(Math.random()*500),
+            Math.floor(Math.random()*500),
+            Math.floor(Math.random()*10)+10,
+            color
+            )
+        //Run myCoolAnimation function once every 150 milliseconds
+        if(is_paused == false) {
+            if(faster == true) {
+                setTimeout(myCoolAnimation, 10)
+            }
+            else {
+                setTimeout(myCoolAnimation, 1000)
+            }
+        }
+
+    }
+
+    var faster = false
+    var is_paused = false;
+    myCoolAnimation()
+
+</script>
+
+<br><br>
+
+<!-- Challenge: implement fast forward button" -->
+<!-- Challenge: implement a clear button" -->
+<button onclick="is_paused = false; myCoolAnimation()"><h1>Play</h1></button>
+<button onclick="is_paused = true; myCoolAnimation()"><h1>Pause</h1></button>
+<button onclick="faster = true; myCoolAnimation()"><h1>FASSSSTT</h1></button>
+
+</html>

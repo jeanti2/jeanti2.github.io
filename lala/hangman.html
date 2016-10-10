@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman</title>
+	<h1 id="h1">Hangman</h1>
+</head>
+<body>
+<script>
+// The variables
+var words = ["hello","fat","lolipop","box","time","fire","pie","food","chick","fruit","oranges","green","black","gray","white","computers","period","option","for","legs","flatend","meat","bone","tender","edible","america","anneliese"];
+var word = words[Math.floor(Math.random() * words.length)]
+var h1 = document.getElementById('h1')
+var timesGuessed = 0;
+var whatYouveGuessed = [];
+
+var answerAray = [];
+for (var i = 0; i < word.length; i++) {
+	answerAray[i] = "_";
+};
+//
+var remianingLetters = word.length;
+
+while((remianingLetters > 0) && (timesGuessed < 6+word.length)){
+	alert(answerAray.join(" "));
+	var guess = prompt("Guess a letter, or click Cancel to stop playing.")
+	timesGuessed++
+	if (guess === null){
+		h1.innerText = "Thanks for playing"
+		break;
+	} else if(guess.length !== 1){
+		guess = guess.toLowerCase()
+		alert("Please enter a single letter.")
+	} else{
+		guess = guess.toLowerCase()
+		if(whatYouveGuessed.indexOf(guess) !== -1){
+			alert("You've already guessed that letter")
+		} else{
+			for (var j = 0; j < word.length; j++) {
+				if (word[j] === guess) {
+					answerAray[j] = guess;
+					remianingLetters--;
+					whatYouveGuessed.push(guess)
+				}
+			}
+	  }
+  }
+}
+
+alert(answerAray.join(" "))
+alert("Good job the answer was " + word + "!")
+
+
+/*
+for(soup){
+  program
+};
+
+
+*/
+
+</script>
+</body>
+</html>
